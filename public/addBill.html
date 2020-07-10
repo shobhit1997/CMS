@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Add Bill | Construction Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body class="centered-form">
+    <div class="centered-form__form">
+        <form id="worker-form">
+            <div class="form-field">
+                <h3>New Bill</h3>
+            </div>
+            <div class="form-field">
+                <label>Name</label>
+                <input type="text" id="name" required />
+            </div>
+            <div class="form-field">
+                <label>Quantity</label>
+                <input type="number" id="quantity" value="1" required />
+            </div>
+            <div class="form-field">
+                <label>Unit Price</label>
+                <input type="number" id="unitPrice" required />
+            </div>
+            <div class="form-field">
+                <label>Bill Amount</label>
+                <input type="number" id="billAmount" required />
+            </div>
+            <div class="form-field">
+                <label>Description</label>
+                <input type="text" id="description" required />
+            </div>
+            <div class="form-field">
+                <label>Bill Date</label>
+                <input id="billDate" type="date" />
+            </div>
+            <div class="form-field">
+                <label>Bill Copy</label>
+                <input id="billFile" type="file" />
+                <button type="button" onclick="uploadBill()">Upload</button>
+                <input id="billCopy" type="text" disabled />
+            </div>
+            <div class="form-field">
+                <button>Add Bill</button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/bills'">
+            Bills
+          </button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/'">
+            Services
+          </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/addBill.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Update Work | Construction Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body class="centered-form">
+    <div class="centered-form__form">
+        <form id="worker-form">
+            <div class="form-field">
+                <h3>Update Work</h3>
+            </div>
+            <div class="form-field">
+                <label>Edit
+            <span
+              ><i
+                id="editButton"
+                class="fa fa-edit"
+                style="font-size: 24px;"
+              ></i></span
+          ></label>
+            </div>
+            <div class="form-field">
+                <label>Name</label>
+                <input type="text" id="work_name" required disabled />
+            </div>
+            <div class="form-field">
+                <label>Place</label>
+                <input type="text" id="work_place" required disabled />
+            </div>
+            <div class="form-field">
+                <label>Description</label>
+                <input type="text" id="work_description" required disabled />
+            </div>
+
+            <div class="form-field">
+                <label>Select Type</label>
+                <select id="work_type" disabled>
+            <option value="construction">Construction</option>
+            <option value="painting">Painting</option>
+            <option value="wiring">Wiring</option>
+            <option value="electric">Electric</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="flooring">Flooring</option>
+            <option value="ceiling">Ceiling</option>
+          </select>
+            </div>
+            <div class="form-field">
+                <label>Start Date</label>
+                <input id="startDate" type="date" disabled />
+            </div>
+            <div class="form-field">
+                <label>End Date</label>
+                <input id="endDate" type="date" disabled />
+            </div>
+            <div class="form-field">
+                <button>Save Work</button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/works'">
+            Works
+          </button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/'">
+            Services
+          </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/updateWork.js"></script>
+</body>
+
+</html>

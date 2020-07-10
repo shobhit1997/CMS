@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Add Work | Construction Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body class="centered-form">
+    <div class="centered-form__form">
+        <form id="worker-form">
+            <div class="form-field">
+                <h3>New Work</h3>
+            </div>
+            <div class="form-field">
+                <label>Name</label>
+                <input type="text" id="work_name" required />
+            </div>
+            <div class="form-field">
+                <label>Place</label>
+                <input type="text" id="work_place" required />
+            </div>
+            <div class="form-field">
+                <label>Description</label>
+                <input type="text" id="work_description" required />
+            </div>
+
+            <div class="form-field">
+                <label>Select Type</label>
+                <select id="work_type">
+            <option value="construction">Construction</option>
+            <option value="painting">Painting</option>
+            <option value="wiring">Wiring</option>
+            <option value="electric">Electric</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="flooring">Flooring</option>
+            <option value="ceiling">Ceiling</option>
+          </select>
+            </div>
+            <div class="form-field">
+                <label>Start Date</label>
+                <input id="startDate" type="date" />
+            </div>
+            <div class="form-field">
+                <button>Add Work</button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/works'">
+            Works
+          </button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="window.location.href='/'">
+            Services
+          </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/addWork.js"></script>
+</body>
+
+</html>
