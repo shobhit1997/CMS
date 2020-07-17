@@ -78,7 +78,7 @@ router.route('/attendance')
                 res.status(400).send({ code: 400, message: e });
             })
         } else {
-            Attendance.find().sort({ date: -1 }).distinct("date").then(result => {
+            Attendance.find().sort("date").distinct("date").then(result => {
                 res.send(result);
             }).catch(e => {
                 res.status(400).send({ code: 400, message: e });
