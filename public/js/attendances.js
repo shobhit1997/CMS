@@ -9,7 +9,9 @@ function loadAttendances() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonData = JSON.parse(this.responseText);
-            console.log(jsonData);
+            jsonData = jsonData.sort(function(a, b) {
+                return new Date(a) - new Date(b);
+            })
             for (i = 0; i < jsonData.length; i++) {
                 $('#attendances-list').append(`<li id="${jsonData[i]}"> 
                                        Attendance _${getDate(jsonData[i])} 
