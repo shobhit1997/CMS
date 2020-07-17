@@ -17,8 +17,11 @@ function loadSummary() {
             $('#day').append(`<option value="total"> 
                                         Total
                                   </option>`);
-            for (i = 0; i < Object.keys(summary).length; i++) {
-                day = Object.keys(summary)[i];
+            days = Object.keys(summary).sort(function(a, b) {
+                return new Date(a) - new Date(b);
+            });
+            for (i = 0; i < days.length; i++) {
+                day = days[i];
                 $('#day').append(`<option value="${day}"> 
                                         ${getDate(day)}
                                   </option>`);
@@ -53,5 +56,5 @@ function getDate(date) {
     if (day.length < 2)
         day = '0' + day;
 
-    return [year, month, day].join('-');
+    return [day, month, year].join('-');
 }
