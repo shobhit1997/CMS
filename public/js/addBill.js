@@ -5,10 +5,10 @@ jQuery('#worker-form').on('submit', function(e) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
-            console.log(json);
+            alert("Success")
         } else if (this.readyState == 4) {
-            var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            // var res = JSON.parse(this.responseText);
+            alert("Error");
         }
     };
     xhttp.open("POST", window.location.origin + "/api/bill", true);
@@ -50,15 +50,18 @@ function getDate(date) {
 }
 
 function uploadBill() {
+    $("#loader").addClass("loader");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
+            $("#loader").removeClass("loader");
             $("#billCopy").val(json.imageUrl);
         } else if (this.readyState == 4) {
-            var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            // var res = JSON.parse(this.responseText);
+            $("#loader").removeClass("loader");
+            alert("Error");
         }
     };
     xhttp.open("POST", window.location.origin + "/api/bill/images", true);

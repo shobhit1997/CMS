@@ -10,6 +10,10 @@ $(document).ready(function() {
         $('#endDate').removeAttr("disabled");
     });
 
+    $("#deleteButton").click(function() {
+        deleteWork();
+    });
+
 });
 
 function loadWorker() {
@@ -55,10 +59,10 @@ jQuery('#worker-form').on('submit', function(e) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
-            console.log(json);
+            alert("Success")
         } else if (this.readyState == 4) {
             var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            alert("Error")
         }
     };
     xhttp.open("PATCH", window.location.origin + "/api/work" + location.search, true);
@@ -73,3 +77,21 @@ jQuery('#worker-form').on('submit', function(e) {
     };
     xhttp.send(JSON.stringify(jsonObj));
 });
+
+function deleteWork() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            var json = JSON.parse(this.responseText);
+            alert("Success")
+            window.location.href = "/works"
+        } else if (this.readyState == 4) {
+            var res = JSON.parse(this.responseText);
+            alert("Error");
+        }
+    };
+    xhttp.open("DELETE", window.location.origin + "/api/work" + location.search, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}

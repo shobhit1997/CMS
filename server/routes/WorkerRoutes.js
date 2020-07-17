@@ -72,7 +72,7 @@ router.route('/attendance')
     .get(async function(req, res) {
 
         if (!R.isEmpty(req.query)) {
-            Attendance.find(req.query).populate('worker').then(result => {
+            Attendance.find(req.query).populate('worker').sort("date").then(result => {
                 res.send(result);
             }).catch(e => {
                 res.status(400).send({ code: 400, message: e });
@@ -90,6 +90,12 @@ router.route('/attendance')
         Promise.all(req.body.map(body => {
             return Attendance.findOneAndUpdate({ worker: body.worker, date: body.date }, R.pick(['amountPayed', 'present', 'remarks'], body), { new: true, upsert: true });
         })).then(result => {
+            res.send(result);
+        }).catch(e => {
+            res.status(400).send({ code: 400, message: e });
+        })
+    }).delete(async function(req, res) {
+        Attendance.deleteMany(req.query).then(result => {
             res.send(result);
         }).catch(e => {
             res.status(400).send({ code: 400, message: e });

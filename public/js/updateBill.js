@@ -17,6 +17,10 @@ $(document).ready(function() {
         $('#uploadBill').removeAttr("disabled");
     });
 
+    $("#deleteButton").click(function() {
+        deleteBill();
+    });
+
 });
 
 function loadBill() {
@@ -63,10 +67,10 @@ jQuery('#worker-form').on('submit', function(e) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
-            console.log(json);
+            alert("Success")
         } else if (this.readyState == 4) {
             var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            alert("Error");
         }
     };
     xhttp.open("PATCH", window.location.origin + "/api/bill" + location.search, true);
@@ -83,16 +87,36 @@ jQuery('#worker-form').on('submit', function(e) {
     xhttp.send(JSON.stringify(jsonObj));
 });
 
-function uploadBill() {
+function deleteBill() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
-            $("#billCopy").val(json.imageUrl);
+            alert("Success")
+            window.location.href = "/bills"
         } else if (this.readyState == 4) {
             var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            alert("Error");
+        }
+    };
+    xhttp.open("DELETE", window.location.origin + "/api/bill" + location.search, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+
+function updateBill() {
+    $("#loader").addClass("loader");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            var json = JSON.parse(this.responseText);
+            $("#loader").removeClass("loader");
+            $("#billCopy").val(json.imageUrl);
+        } else if (this.readyState == 4) {
+            $("#loader").removeClass("loader");
+            alert("Error");
         }
     };
     xhttp.open("POST", window.location.origin + "/api/bill/images", true);

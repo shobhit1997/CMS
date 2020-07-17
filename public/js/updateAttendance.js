@@ -9,7 +9,9 @@ $(document).ready(function() {
         $('#startDate').removeAttr("disabled");
         $('#endDate').removeAttr("disabled");
     });
-
+    $("#deleteButton").click(function() {
+        deleteAttendance();
+    });
 });
 workersMap = {};
 
@@ -39,7 +41,6 @@ function loadAttendance() {
                 addOtherWorkers();
             }
         } else if (this.readyState == 4) {
-            console.log(JSON.parse(this.responseText));
             alert("Invalid Data")
         }
     };
@@ -100,10 +101,10 @@ jQuery('#worker-form').on('submit', function(e) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var json = JSON.parse(this.responseText);
-            console.log(json);
+            alert("Success")
         } else if (this.readyState == 4) {
             var res = JSON.parse(this.responseText);
-            alert(res.message || "Unknown Error");
+            alert("Error")
         }
     };
     xhttp.open("PATCH", window.location.origin + "/api/worker/attendance" + location.search, true);
@@ -123,3 +124,21 @@ jQuery('#worker-form').on('submit', function(e) {
     console.log(jsonOb);
     xhttp.send(JSON.stringify(jsonOb));
 });
+
+function deleteAttendance() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            var json = JSON.parse(this.responseText);
+            alert("Success")
+            window.location.href = "/attendances"
+        } else if (this.readyState == 4) {
+            var res = JSON.parse(this.responseText);
+            alert("Error");
+        }
+    };
+    xhttp.open("DELETE", window.location.origin + "/api/worker/attendance" + location.search, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}

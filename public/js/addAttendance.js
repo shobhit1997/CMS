@@ -46,8 +46,9 @@ function markAttendance() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonData = JSON.parse(this.responseText);
             console.log(jsonData);
+            alert("Success");
         } else if (this.readyState == 4) {
-            console.log(JSON.parse(this.responseText));
+            // console.log(JSON.parse(this.responseText));
             alert("Invalid Data")
         }
     };
